@@ -29,19 +29,28 @@ vars:
   class_name:
     type: string
     description: Class name
-    default: my_app
-    prompt: What would you like to name your API Client class? (Client will be named '{name}_api_client')
+    default: MyApp
+    prompt: What would you like to name your API Client class? (Client will be named '{name}ApiClient')
 
   content_type:
     type: enum
     description: Content Type
-    default: "json"
-    values: ["text", "html", "json", "binary"]
+    default: json
+    # values: ["text", "html", "json", "binary"]
+    values:
+      - text
+      - html
+      - json
+      - binary
     prompt: What is your client's primary content type? (Default is JSON)
 
   authorization:
     type: enum
     description: Authorization
-    default: "none"
-    values: ["none", "basic", "bearer", "digest", "negotiate"]
-    prompt: What type of authorization do you want on your client? (Default is none)
+    default: basic
+    values:
+      - basic
+      - bearer
+      - digest
+      - negotiate
+    prompt: What type of authorization do you want on your client? (Default is Basic)

@@ -1,0 +1,6 @@
+
+*.dill
+
+hooks/.dart_tool/
+
+.mason/
