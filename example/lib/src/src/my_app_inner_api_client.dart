@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
-/// {@template {{class_name.snakeCase()}}_inner_api_client}
-/// An internal implementation of an HTTP client to interact with the {{class_name}} API.
+/// {@template my_app_inner_api_client}
+/// An internal implementation of an HTTP client to interact with the MyApp API.
 /// {@endtemplate}
-class {{class_name.pascalCase()}}InnerApiClient extends BaseClient {
-  /// {@macro {{class_name.snakeCase()}}_inner_api_client}
-  {{class_name.pascalCase()}}InnerApiClient({required Client httpClient}) : _httpClient = httpClient;
+class MyAppInnerApiClient extends BaseClient {
+  /// {@macro my_app_inner_api_client}
+  MyAppInnerApiClient({required Client httpClient}) : _httpClient = httpClient;
 
   final Client _httpClient;
 
@@ -15,16 +15,16 @@ class {{class_name.pascalCase()}}InnerApiClient extends BaseClient {
   Future<StreamedResponse> send(BaseRequest request) {
     request.headers.putIfAbsent(
       HttpHeaders.contentTypeHeader,
-      () => ContentType.{{content_type}}.value,
+      () => ContentType.json.value,
     );
     request.headers.putIfAbsent(
       HttpHeaders.acceptHeader,
-      () => ContentType.{{content_type}}.value,
+      () => ContentType.json.value,
     );
     request.headers.putIfAbsent(
       HttpHeaders.authorizationHeader,
       // TODO: supply authorization credentials
-      () => '{{authorization.pascalCase()}} xxxxxx'
+      () => 'Basic xxxxxx'
     );
     return _httpClient.send(request);
   }

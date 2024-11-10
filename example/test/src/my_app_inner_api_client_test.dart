@@ -2,7 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:{{class_name.snakeCase()}}_api_client/{{class_name.snakeCase()}}_api_client.dart';
+import 'package:my_app_api_client/my_app_api_client.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
@@ -12,10 +12,10 @@ class _MockHttpClient extends Mock implements Client {}
 class _MockRequest extends Mock implements Request {}
 
 void main() {
-  group('{{class_name.pascalCase()}}ApiClient', () {
+  group('MyAppApiClient', () {
     late Client httpClient;
     late Request request;
-    late {{class_name.pascalCase()}}InnerApiClient innerApiClient;
+    late MyAppInnerApiClient innerApiClient;
 
     setUpAll(() {
       registerFallbackValue(Request('GET', Uri()));
@@ -24,7 +24,7 @@ void main() {
     setUp(
       () {
         httpClient = _MockHttpClient();
-        innerApiClient = {{class_name.pascalCase()}}InnerApiClient(
+        innerApiClient = MyAppInnerApiClient(
           httpClient: httpClient,
         );
 
@@ -41,7 +41,7 @@ void main() {
 
     test('can be instantiated', () {
       expect(
-        {{class_name.pascalCase()}}InnerApiClient,
+        MyAppInnerApiClient,
         isNotNull,
       );
     });
@@ -53,10 +53,10 @@ void main() {
           request.headers,
           equals(
             {
-              HttpHeaders.contentTypeHeader: ContentType.{{content_type}}.value,
-              HttpHeaders.acceptHeader: ContentType.{{content_type}}.value,
+              HttpHeaders.contentTypeHeader: ContentType.json.value,
+              HttpHeaders.acceptHeader: ContentType.json.value,
               // TODO: supply authorization credentials
-              HttpHeaders.authorizationHeader: '{{authorization.pascalCase()}} xxxxxx'
+              HttpHeaders.authorizationHeader: 'Basic xxxxxx'
             },
           ),
         );
